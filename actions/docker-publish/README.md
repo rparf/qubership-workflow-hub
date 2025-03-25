@@ -1,6 +1,6 @@
-# 🚀 Docker Publish Workflow
+# 🚀 Docker Publish Action
 
-This **Docker Publish** GitHub Workflow automates building and publishing Docker images.
+This **Docker Publish** GitHub Action automates building and publishing Docker images.
 
 ## Features
 
@@ -12,12 +12,14 @@ This **Docker Publish** GitHub Workflow automates building and publishing Docker
 
 | Name              | Description                                                                 | Required | Default |
 | ----------------- | --------------------------------------------------------------------------- | -------- | ------- |
-| `ref`             | Tag or branch name to create release from                                          | No       | None    |
+| `ref`             | Tag or branch name to create release from                                   | No       | None    |
 | `artifact-id`     | Artifact ID to use                                                          | No       | None    |
 | `context`         | Docker build context. Can be `git` or `workflow`                            | No       | `git`   |
 | `dry-run`         | If true, performs a dry run without pushing the image                       | No       | `false` |
 | `download-artifact` | If true, downloads the artifact before building the Docker image          | No       | `false`  |
 | `component`       | JSON string describing components for building Docker images                | No       | `[{"name": "default", "file": "./Dockerfile", "context": "."}]` |
+| `platforms`       | List of platforms on which the image must be built                          | No       | `linux/amd64` |
+| `tags-override`   | If true tag will be overrided                                               | No       | None |
 
 ### Detailed Description of Variables
 
@@ -41,7 +43,7 @@ For example, if you have multiple components defined as follows:
 Below is an example of how to use this reusable workflow in a GitHub Actions workflow:
 
 ```yaml
-name: Docker Publish Workflow
+name: Docker Publish Action
 
 on:
   push:
@@ -53,7 +55,7 @@ permissions:
 
 jobs:
   call-docker-publish:
-    uses: netcracker/qubership-workflow-hub/.github/workflows/docker-publish.yml@main
+    uses: Netcracker/qubership-workflow-hub/actions/docker-publish@main
     with:
       ref: "main"
       artifact-id: "my-artifact"
