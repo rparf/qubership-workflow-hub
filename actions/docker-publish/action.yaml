@@ -108,7 +108,7 @@ runs:
     shell: bash
     run: |
       ls -la
-      ls -la target
+      ls -la dbass-agregatordbaas-aggregator/target
 
   - name: Build and push Docker image
     uses: docker/build-push-action@v4
