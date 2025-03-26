@@ -103,7 +103,7 @@ runs:
     shell: bash
     run: |
           ls -la 
-          ls -la /dbaas-aggregator/target
+          ls -la dbaas-aggregator
 
   - name: Build and push Docker image
     uses: docker/build-push-action@v4
