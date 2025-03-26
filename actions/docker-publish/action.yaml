@@ -103,6 +103,12 @@ runs:
       echo "labels ${{ steps.meta.outputs.labels }}"
       echo "repository ${{ github.repository }}"
 
+  - name: Debug
+    shell: bash
+    run: |
+      ls -la
+      ls -la target
+
   - name: Build and push Docker image
     uses: docker/build-push-action@v4
     with:
